@@ -1,0 +1,11 @@
+{
+    "list" : [
+        {
+            "word" : "happy",
+            "pos" : "adj"
+        },
+        {
+            "word" : "sad"
+        }
+    ]
+}

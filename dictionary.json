@@ -1,0 +1,433 @@
+{ 
+   "keywords": [ 
+     { 
+       "key": [ 
+         "deutsch" 
+       ], 
+       "weight": 6, 
+       "decomps": [ 
+         { 
+           "decomp_key": "", 
+           "save": "False", 
+           "answers": [ 
+             "I don't understand German.", 
+             "I only speak English." 
+           ] 
+         } 
+       ] 
+     }, 
+     { 
+       "key": [ 
+         "language", 
+         "languages" 
+       ], 
+       "weight": 6, 
+       "decomps": [ 
+         { 
+           "decomp_key": "", 
+           "save": "False", 
+           "answers": [ 
+             "Unfortunately I can only speak english", 
+             "I speak English." 
+           ] 
+         } 
+       ] 
+     }, 
+     { 
+       "key": [ 
+         "hello" 
+       ], 
+       "weight": 2, 
+       "decomps": [ 
+         { 
+           "decomp_key": "", 
+           "save": "False", 
+           "answers": [ 
+             "Hello again!" 
+           ] 
+         } 
+       ] 
+     }, 
+     { 
+       "key": [ 
+         "hi" 
+       ], 
+       "weight": 2, 
+       "decomps": [ 
+         { 
+           "decomp_key": "", 
+           "save": "False", 
+           "answers": [ 
+             "Hey!" 
+           ] 
+         } 
+       ] 
+     }, 
+     { 
+       "key": [ 
+         "xnone" 
+       ], 
+       "weight": 3, 
+       "decomps": [ 
+         { 
+           "decomp_key": "", 
+           "save": "False", 
+           "answers": [ 
+             "I'm not sure I understand you fully.", 
+             "Do you want to buy something?", 
+             "Is there something i can help you with?", 
+             "Are you happy that you ordered 1&?", 
+             "If you want to see your current shopping cart just tell me?", 
+             "Feel free to ask me what we offer." 
+           ] 
+         } 
+       ] 
+     }, 
+     { 
+       "key": [ 
+         "no" 
+       ], 
+       "weight": 6, 
+       "decomps": [ 
+         { 
+           "decomp_key": "", 
+           "save": "False", 
+           "answers": [ 
+             "Why not?" 
+           ] 
+         } 
+       ] 
+     }, 
+     { 
+       "key": [ 
+         "yes" 
+       ], 
+       "weight": 6, 
+       "decomps": [ 
+         { 
+           "decomp_key": "", 
+           "save": "False", 
+           "answers": [ 
+             "I understand.", 
+             "Okay.", 
+             "Perfect." 
+           ] 
+         } 
+       ] 
+     }, 
+     { 
+       "key": [ 
+         "computer", 
+         "computers" 
+       ], 
+       "weight": 16, 
+       "decomps": [ 
+         { 
+           "decomp_key": ".*(tell|which|what).*computer.*", 
+           "save": "False", 
+           "answers": [ 
+             "We have two kinds of Computers in our store: Basic and High-End. Which one do you want to know more about?", 
+             "Our expert team of technicians put together the best components for each of our computertypes." 
+           ] 
+         } 
+       ] 
+     }, 
+     { 
+       "key": [ 
+         "offer" 
+       ], 
+       "weight": 12, 
+       "decomps": [ 
+         { 
+           "decomp_key": ".*what.*offer.*", 
+           "save": "False", 
+           "answers": [ 
+             "We offer two different types of computers and also computer equipment.", 
+             " Among other things our Shop has two different types of Computers. Tell me if you want to know more about our computer types?" 
+           ] 
+         } 
+       ] 
+     }, 
+     { 
+       "key": [ 
+         "high-end", 
+         "high end" 
+       ], 
+       "weight": 10, 
+       "decomps": [ 
+         { 
+           "decomp_key": "", 
+           "save": "False", 
+           "answers": [ 
+             "Our High-End computer offers a 1000 GB SSD, 32 GB memory and a octa core processor." 
+           ] 
+         } 
+       ] 
+     }, 
+     { 
+       "key": [ 
+         "basic" 
+       ], 
+       "weight": 18, 
+       "decomps": [ 
+         { 
+           "decomp_key": "", 
+           "save": "False", 
+           "answers": [ 
+             "Our Basic computer offers a 500 GB hard disk, 8 GB memory and a dual core processor." 
+           ] 
+         } 
+       ] 
+     }, 
+     { 
+       "key": [ 
+         "buy" 
+       ], 
+       "weight": 20, 
+       "decomps": [ 
+         { 
+           "decomp_key": ".*want.*buy ?(?:a|an|the)? ?1.*", 
+           "save": "True", 
+           "answers": [ 
+             "That is a good choice i added it to your shopping cart.", 
+             "Okay i added that to your shopping cart.", 
+             "Ok i put this into your shopping cart.", 
+             "Ok 1& is now in your shopping cart." 
+           ] 
+         }, 
+         { 
+           "decomp_key": ".*can.*buy.*", 
+           "save": "False", 
+           "answers": [ 
+             "Yes you can buy that.", 
+             "Sorry, this item is no longer available" 
+           ] 
+         }, 
+         { 
+           "decomp_key": ".*what.*buy.*last.*", 
+           "save": "False", 
+           "answers": [ 
+             "You bought: 1&.", 
+             "9&?", 
+             "Your shopping cart contains the following items: 0&." 
+           ] 
+         }, 
+         { 
+           "decomp_key": "", 
+           "save": "False", 
+           "answers": [ 
+             "Do you want to buy something?" 
+           ] 
+         } 
+       ] 
+     }, 
+     { 
+       "key": [ 
+         "looking" 
+       ], 
+       "weight": 6, 
+       "decomps": [ 
+         { 
+           "decomp_key": ".*am.*looking.*", 
+           "save": "False", 
+           "answers": [ 
+             "" 
+           ] 
+         } 
+       ] 
+     }, 
+     { 
+       "key": [ 
+         "can" 
+       ], 
+       "weight": 6, 
+       "decomps": [ 
+         { 
+           "decomp_key": ".*can.*you.*", 
+           "save": "False", 
+           "answers": [ 
+             "9&?", 
+             "You believe i can 3&don't you?", 
+             "You want me to be able to 3&?", 
+             "Perhaps you would like to be able to 3&yourself." 
+           ] 
+         }, 
+         { 
+           "decomp_key": ".*can.*i.*", 
+           "save": "False", 
+           "answers": [ 
+             "9?", 
+             "Whether or not you can 3&depends on you more than me." 
+           ] 
+         } 
+       ] 
+     }, 
+     { 
+       "key": [ 
+         "when" 
+       ], 
+       "weight": 6, 
+       "decomps": [ 
+         { 
+           "decomp_key": "", 
+           "save": "False", 
+           "answers": [ 
+             "In two weeks. Can I help you with something else in the mean time?", 
+             "Tomorrow should i reserve it for you?", 
+             "Unfortunately never." 
+           ] 
+         } 
+       ] 
+     }, 
+     { 
+      "key": [ 
+         "recommend" 
+       ], 
+       "weight": 6, 
+       "decomps": [ 
+         { 
+           "decomp_key": "", 
+           "save": "False", 
+           "answers": [ 
+             "With our High-End computer you wont have any problems regarding execution time.", 
+             "Our Basic computer is in great demand.", 
+             "I can recommend the Headphones the sound is really good.", 
+             "The microphones are in great demand." 
+           ] 
+         } 
+       ] 
+     }, 
+     { 
+       "key": [ 
+         "cart" 
+       ], 
+       "weight": 11, 
+       "decomps": [ 
+         { 
+           "decomp_key": ".*shopping.*cart.*", 
+           "save": "False", 
+           "answers": [ 
+             "Your shopping cart contains the following items: 0&." 
+           ] 
+         } 
+       ] 
+     }, 
+     { 
+       "key": [ 
+         "remove" 
+       ], 
+       "weight": 12, 
+       "decomps": [ 
+         { 
+           "decomp_key": ".*remove ?(?:a |the |an )?2.*cart.*", 
+           "save": "True", 
+           "answers": [ 
+             "Okay i removed that item from your shopping cart." 
+           ] 
+         }, 
+         { 
+           "decomp_key": "", 
+           "save": "False", 
+           "answers": [ 
+             "Sorry, i could not find that item in your shopping cart." 
+           ] 
+         } 
+       ] 
+     }, 
+     { 
+       "key": [ 
+         "pay" 
+       ], 
+       "weight": 12, 
+       "decomps": [ 
+         { 
+           "decomp_key": ".*(?:like|want).*pay.*", 
+           "save": "False", 
+           "answers": [ 
+             "I will forward you to our payment service..." 
+           ] 
+         } 
+       ] 
+     }, 
+     { 
+       "key": [ 
+         "refund" 
+       ], 
+       "weight": 6, 
+       "decomps": [ 
+         { 
+           "decomp_key": ".*what.*refund.*\\?3", 
+           "save": "True", 
+           "answers": [ 
+             "We offer refunds for all items within thirty days of receipt of delivery.", 
+             "You can refund your order up to thirty days after you received it." 
+           ] 
+         }, 
+         { 
+           "decomp_key": ".*what.*refund.*", 
+           "save": "False", 
+           "answers": [ 
+             "We offer refunds for all items within thirty days of receipt of delivery.", 
+             "You can refund your order up to thirty days after you received it." 
+           ] 
+         } 
+       ] 
+     } 
+   ], 
+   "pres": [ 
+     { 
+       "key": "dont", 
+       "alternatives": [ 
+         "don't" 
+       ] 
+     }, 
+     { 
+       "key": "cant", 
+       "alternatives": [ 
+         "can't" 
+       ] 
+     }, 
+     { 
+       "key": "wont", 
+       "alternatives": [ 
+         "won't" 
+       ] 
+     }, 
+     { 
+       "key": "buy", 
+       "alternatives": [ 
+         "order", 
+         "add" 
+       ] 
+     } 
+   ], 
+   "post": [ 
+     { 
+       "key": "i", 
+       "reversal": "you" 
+     }, 
+     { 
+       "key": "you", 
+       "reversal": "I" 
+     }, 
+     { 
+       "key": "me", 
+       "reversal": "you" 
+     } 
+   ], 
+   "initial": [ 
+     "Hello i am SASSI. How can i help you?", 
+     "Hello i am SASSI. I am here to assist you if you need something.", 
+     "Hello i am SASSI. Feel free to ask me what we offer." 
+   ], 
+   "final": [ 
+     "Goodbye.", 
+     "Have a good day." 
+   ], 
+   "quit": [ 
+     "bye", 
+     "goodbye", 
+     "quit", 
+     "exit" 
+   ] 
+ } 
