@@ -1,7 +1,7 @@
 import random 
 import re
 import json
-from Analyzer.Listener import Listener
+from Analyzer.Listener import Listen  er
 from Analyzer.Speaker import Speaker
 from Dictionary.Dictionary import Dictionary
  
