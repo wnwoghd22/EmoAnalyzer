@@ -5,4 +5,8 @@ class Speaker:
         self.tokens = []
 
     def respond(self, record) :
-        return None
+
+        record 
+
+
+        return 

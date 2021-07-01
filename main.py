@@ -1,9 +1,10 @@
 import random 
 import re
 import json
-from Analyzer.Listener import Listen  er
+from Analyzer.Listener import Listener
 from Analyzer.Speaker import Speaker
 from Dictionary.Dictionary import Dictionary
+from Analyzer.EmoAnalyzer import Emotion
  
 class Key: 
     def __init__(self, word, decomps, weight): 
@@ -173,6 +174,10 @@ class Bot:
         #print(random.choice(self.finals)) 
 
 def main():
+    e1 = Emotion(1,2)
+    e2 = Emotion(3,4)
+    print(e1 + e2)
+
     bot = Bot()
     bot.run()
  
