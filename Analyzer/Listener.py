@@ -1,9 +1,11 @@
 import re
 from .EmoAnalyzer import EmoAnalyzer
+from .Parser import Parser
 
 class Listener:
     def __init__(self) :
         self.emoAnalyzer = EmoAnalyzer()
+        self.parser = Parser()
 
     def listen(self, input_s, dictionary) :
         #tokenizer
@@ -29,7 +31,7 @@ class Listener:
             elif re.match('\d+.\d+.\d+', w) != None : # DDD.DDD.DDD (date format etc.)
                 tokens.append({
                     'word' : w,
-                    'pos' : 'date' #date ?
+                    'pos' : 'n' #date ?
                 })
             elif re.match('[^\.]+\.', w) != None : # ends with . (Mr. , ... , end of sentence)
                 #need to add logic to catch Mr. , Ms. , others...
@@ -39,6 +41,19 @@ class Listener:
                 tokens.append({
                     'word' : '.',
                     'pos' : '.'
+                })
+            elif re.match('.*[\!\?]', w) != None :  # ends with ! or ?
+                tokens.append(w[:-1])
+                tokens.append({
+                    'word' : w[-1],
+                    'pos' : '.'
+                })
+
+            elif re.match('[^\,]+\,', w) != None : # ends with ,
+                tokens.append(w[:-1])
+                tokens.append({
+                    'word' : ',',
+                    'pos' : ','
                 })
             else :
                 tokens.append(w)
@@ -54,9 +69,4 @@ class Listener:
         return taggedTokens
 
     def parse(self, taggedTokens, dictionary) :
-        record = []
-
-        for tt in taggedTokens :
-            print(tt)
-
-        return record
+        return self.parser.parse(taggedTokens)
