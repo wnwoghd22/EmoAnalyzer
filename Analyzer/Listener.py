@@ -33,7 +33,7 @@ class Listener:
                 })
             elif re.match('[^\.]+\.', w) != None : # ends with . (Mr. , ... , end of sentence)
                 #need to add logic to catch Mr. , Ms. , others...
-
+                
                 #if end of sentence
                 tokens.append(w[:w.find(".")])
                 tokens.append({
