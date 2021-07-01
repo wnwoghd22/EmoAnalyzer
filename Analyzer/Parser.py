@@ -35,7 +35,7 @@ class Parser:
 
     def parse(self, taggedTokens) :
         self.stack = []
-        self.record = []
+        self.record = {}
         for tt in taggedTokens :
             if acceptToken(tt) : continue
             return False
@@ -66,9 +66,7 @@ class Parser:
                 self.stack.push('NP$')
                 self.state = 1
             elif token['pos'] in ['md', 'v'] : # encountered verbal phrase
-                record.push({
-                    'SUBJECT' : ' '.join(phrase)
-                })
+                self.record['SUBJECT'] = ' '.join(phrase)
                 self.phrase.clear()
                 self.stack.push('NP')
                 self.state = 2
