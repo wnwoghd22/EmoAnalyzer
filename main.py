@@ -178,6 +178,20 @@ def main():
     e2 = Emotion(3,4)
     print(e1 + e2)
 
+    e3 = Emotion('45d', 1)
+    print(e3, e3.rad(), e3.deg(), e3.getEmot())
+
+    e4 = Emotion('225d', 1)
+    print(e4, e4.rad(), e4.deg(), e4.getEmot())
+
+    e5 = Emotion('135d', 1)
+    print(e5, e5.rad(), e5.deg(), e5.getEmot())
+
+    e6 = Emotion('315d', 1)
+    print(e6, e6.rad(), e6.deg(), e6.getEmot())
+
+    print(e1 * e2, e1 * 2)
+
     bot = Bot()
     bot.run()
  

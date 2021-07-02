@@ -2,7 +2,8 @@
     "list":[
         {
             "word": "happy",
-            "pos":"adj"
+            "pos":"adj",
+            "emotion": [ "18d", 1 ]
         },
         {
             "word":"sad",
@@ -54,7 +55,8 @@
         },
         {
             "word":"dutchmen",
-            "pos":"n"
+            "pos":"n",
+            "emotion": [0,0]
         },
         {
             "word":"camels",
@@ -580,7 +582,7 @@
         "pos":"pro"    
         },
         {
-        "word":"i",
+        "word":"I",
         "pos":"pro"    
         },
         {
@@ -668,7 +670,7 @@
         "pos":"n"    
         },
         {
-        "word":"fater",
+        "word":"father",
         "pos":"n"
         },
         {

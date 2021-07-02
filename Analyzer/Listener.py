@@ -42,7 +42,7 @@ class Listener:
                     'word' : '.',
                     'pos' : '.'
                 })
-            elif re.match('.*[\!\?]', w) != None :  # ends with ! or ?
+            elif re.match('.+[\!\?]', w) != None :  # ends with ! or ?
                 tokens.append(w[:-1])
                 tokens.append({
                     'word' : w[-1],
@@ -55,6 +55,7 @@ class Listener:
                     'word' : ',',
                     'pos' : ','
                 })
+
             else :
                 tokens.append(w)
 
