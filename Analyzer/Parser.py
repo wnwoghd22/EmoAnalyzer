@@ -92,19 +92,25 @@ class Parser:
                 self.state = 2
             elif token['pos'] == 'uh' :
                 self.phrase.append(token['word'])
-                self.pushSentence('Interjection')
-                self.pushRecord()
-                self.stack.append('S')
-                self.stack.append('$')
+                self.stack.append('UH')
                 self.state = 0
         elif top == 'W' :
             if token['pos'] in ['n', 'det', 'adj', 'pro'] :
                 self.phrase.append(token['word'])
                 self.stack.append('WNP')
                 self.state = 1
-        elif top == 'S' :
-            if token['pos'] in ['emot', 'emoj'] :
+        elif top == 'UH' :
+            if token['pos'] in ['.', ','] :
+                self.pushSentence('Interjection')
+                self.pushRecord()
                 self.stack.append('S')
+                self.stack.append('$')
+                self.state = 0
+            elif token['pos'] in ['emot', 'emoj'] :
+                self.pushSentence('Interjection')
+                self.pushRecord()
+                self.stack.append('S')
+                self.stack.append('$')
                 self.state = 0
         return True
 
@@ -193,11 +199,21 @@ class Parser:
                 self.stack.append('S')
                 self.stack.append('$')
                 self.state = 0
-        elif top == 'PP$' :
+            elif token['pos'] in ['n'] :
+                self.phrase.append(token['word'])
+                self.stack.append('PP')
+                self.state = 1
+        elif top == 'PP$' :  # possessive - need to be continued
             if token['pos'] in ['n'] :
                 self.phrase.append(token['word'])
                 self.stack.append('PP')
                 self.state = 1
+            elif token['pos'] in ['emot', 'emoj'] :  # if necessary part is missed
+                tempToken = token['switch']
+                if tempToken['pos'] in ['n'] :
+                    self.phrase.append(tempToken['word'])
+                    self.stack.append('PP')
+                    self.state = 1
         #else
 
         return True
@@ -291,6 +307,18 @@ class Parser:
                 self.phrase.append(token['word'])
                 self.stack.append('V3')
                 self.state = 3
+            elif token['pos'] in ['emoj', 'emot'] :
+                tempToken = token['switch']
+                if tempToken['pos'] == 'n' :
+                    self.phrase.append(token['word'])
+                    self.stack.append('V3')
+                    self.state = 3
+                else :
+                    self.pushSentence('VP')
+                    self.pushRecord()
+                    self.stack.append('S') 
+                    self.stack.append('$') 
+                    self.state = 0
         return True
 
     def state4(self, token) :

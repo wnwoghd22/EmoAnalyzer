@@ -197,14 +197,19 @@
             "emot": ["30d", 0.5]
         },
         {
-            "word": "\\U1F631",
-            "pos": "emoj",
-            "emot": ["135d", 1]
-        },
-        {
             "word": ":(",
             "pos": "emot",
             "emot": ["-135d", 0.5]
+        },
+        {
+            "word": "\\U1F631",
+            "pos": "emoj",
+            "emot": ["135d", 1],
+            "switch": {
+                "word": "frightened",
+                "pos": "adj",
+                "emot": ["135d", 1]
+            }
         },
         {
             "word": "\\U1F44F",
@@ -219,7 +224,11 @@
         {
             "word": "\\U1F3B7",
             "pos": "emoj",
-            "emot": ["0d", 0]
+            "emot": ["0d", 0],
+            "switch": {
+                "word": "saxophone",
+                "pos": "n"
+            }
         },
         {
             "word": "\\U1F62B",

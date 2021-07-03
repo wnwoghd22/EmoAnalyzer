@@ -47,9 +47,9 @@ def main():
     lines = sample.read().splitlines()
     for line in lines :
         print(line)
-        bot.run(line)
+        #bot.run(line)
     
-    #bot.run()
+    bot.run()
 
 if __name__ == '__main__': 
      main() 
