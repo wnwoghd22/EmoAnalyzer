@@ -17,17 +17,21 @@ also stack (push-down) is used.
     - if a verb has valency of 3, then switch state into 3
 3 : noun phrase (DATIVE) - indirect object
     - if next noun phrase encountered, then switch state into 4
+    - if prepositional phrase encountered, then switch state into 9
 4 : noun phrase (ACCUSATIVE) - direct object
-
+    - if noun phrase catched, then switch state into 5
+    - if prepositional phrase encountered, then switch state into 9
 5 : adverb
-
+    - may be end of sentence
+    - if prepositional phrase encountered, then switch state into 9
 6 : be verb
     - if encounter gerund or p.p, then switch state into 8
     - adj -> state 7
 7 : <be> <adj>
-
-8 : gerund, p.p (AUX + ~ing / ~n, ed)
-
+    - if gerund or p.p encountered, then switch state as like state 2
+    - if adjective encountered, remain
+8 : //
+    *unused
 9 : prepositional phrase
 
 """
@@ -264,6 +268,7 @@ class Parser:
 
         return True
 
+    #indirect object
     def state3(self, token) :
         top = self.getTop()
         if top == 'V3' :
@@ -321,6 +326,7 @@ class Parser:
                     self.state = 0
         return True
 
+    #direct object
     def state4(self, token) :
         top = self.getTop()
         if top == 'V2' :
@@ -371,6 +377,7 @@ class Parser:
                 self.state = 0
         return True
 
+    #end of verbal phrase
     def state5(self, token) :
         top = self.getTop()
         if top == 'VP' :
@@ -449,6 +456,7 @@ class Parser:
                 self.state = 9
         return True
 
+    #unused
     def state8(self, token) :
         top = self.getTop()
 

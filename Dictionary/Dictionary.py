@@ -29,4 +29,3 @@ class Dictionary:
                 pattern = '^[' + target[0] + (chr(ord(target[0]) + ord('a') - ord('A'))) + ']' + target[1:] + '$'
                 if re.match(pattern, e['word']) :
                     return e
-

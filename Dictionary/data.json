@@ -189,17 +189,32 @@
         {
             "word": ":)",
             "pos": "emot",
-            "emot": ["45d", 0.5]
+            "emot": ["45d", 0.5],
+            "switch": {
+                "word":"happy",
+                "pos":"adj",
+                "emot": ["45d", 0.5]
+            }
         },
         {
             "word": ";)",
             "pos": "emot",
-            "emot": ["30d", 0.5]
+            "emot": ["30d", 0.5],
+            "switch": {
+                "word":"joyful",
+                "pos":"adj",
+                "emot": ["30d", 0.5]
+            }
         },
         {
             "word": ":(",
             "pos": "emot",
-            "emot": ["-135d", 0.5]
+            "emot": ["-135d", 0.5],
+            "switch": {
+                "word":"sad",
+                "pos":"adj",
+                "emot": ["-135d", 0.5]
+            }
         },
         {
             "word": "\\U1F631",
@@ -214,12 +229,22 @@
         {
             "word": "\\U1F44F",
             "pos": "emoj",
-            "emot": ["0d", 0.3]
+            "emot": ["0d", 0.3],
+            "switch": {
+                "word":"clap",
+                "pos":"n",
+                "emot": ["0d", 0.3]
+            }
         },
         {
             "word": "\\U1F648",
             "pos": "emoj",
-            "emot": ["45d", 0.3]
+            "emot": ["45d", 0.3],
+            "switch": {
+                "word":"embarrased",
+                "pos":"adj",
+                "emot": ["45d", 0.3]
+            }
         },
         {
             "word": "\\U1F3B7",
@@ -233,12 +258,22 @@
         {
             "word": "\\U1F62B",
             "pos": "emoj",
-            "emot": ["135d", 1.5]
+            "emot": ["135d", 1.5],
+            "switch": {
+                "word":"painful",
+                "pos":"adj",
+                "emot": ["135d", 1.5]
+            }
         },
         {
             "word": "\\U1F60D",
             "pos": "emoj",
-            "emot": ["45d", 2.5]
+            "emot": ["45d", 2.5],
+            "switch": {
+                "word":"excellent",
+                "pos":"adj",
+                "emot": ["45d", 2.5]
+            }
         }
     ]
 }
