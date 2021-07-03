@@ -5,8 +5,9 @@ class Speaker:
         self.tokens = []
 
     def respond(self, record) :
+        for r in record :
+            print(r, record[r])
 
-        record 
+        #answer
 
-
-        return 
+        return record

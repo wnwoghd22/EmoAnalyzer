@@ -6,8 +6,18 @@ class Listener:
     def __init__(self) :
         self.emoAnalyzer = EmoAnalyzer()
         self.parser = Parser()
+        self.emojiList = {
+            '👏' : '\\U1F44F',
+            '🙈' : '\\U1F648', 
+            '😍' : '\\U1F60D', 
+            '😫' : '\\U1F62B', 
+            '😱' : '\\U1F631', 
+            '🎷' : '\\U1F3B7'
+        }
 
     def listen(self, input_s, dictionary) :
+        self.emoAnalyzer.Clear()
+
         #tokenizer
         tokens = self.tokenize(input_s, dictionary)
 
@@ -15,7 +25,7 @@ class Listener:
         taggedTokens = self.tag(tokens, dictionary)
 
         #parsing
-        record = self.parse(taggedTokens, dictionary)
+        record = self.parse(taggedTokens, self.emoAnalyzer)
 
         return record
 
@@ -48,12 +58,25 @@ class Listener:
                     'word' : w[-1],
                     'pos' : '.'
                 })
-
+            elif re.match('\d+', w) != None :
+                tokens.append({
+                    'word' : w,
+                    'pos' : 'cd'
+                })
             elif re.match('[^\,]+\,', w) != None : # ends with ,
                 tokens.append(w[:-1])
                 tokens.append({
                     'word' : ',',
                     'pos' : ','
+                })
+
+            elif self.emojiList.get(w) != None :
+                tokens.append(self.emojiList[w])  # as UNICODE
+
+            elif w in ['.', '!', '?'] :
+                tokens.append({
+                    'word' : w,
+                    'pos' : '.'
                 })
 
             else :
@@ -65,9 +88,15 @@ class Listener:
         taggedTokens = []
 
         for t in tokens :
-            print(t)
+            if isinstance(t, str) :
+                taggedTokens.append(dictionary.findWord(t))
+            else :
+                taggedTokens.append(t)
+
+        for tt in taggedTokens :
+            print(tt)
 
         return taggedTokens
 
-    def parse(self, taggedTokens, dictionary) :
-        return self.parser.parse(taggedTokens)
+    def parse(self, taggedTokens, emoAnalyzer) :
+        return self.parser.parse(taggedTokens, emoAnalyzer)

@@ -21,7 +21,7 @@ class Vector:
         return self.rad() * 180 / math.pi
 
     def __add__(self, v) :
-        return Vector(
+        return self.__class__(
             self.x + v.x,
             self.y + v.y
         )
@@ -30,7 +30,7 @@ class Vector:
         if isinstance(v, Vector):
             return self.x * v.x + self.y * v.y
         elif isinstance(v, Number) :
-            return Vector(
+            return self.__class__(
                 self.x * v,
                 self.y * v
             )
@@ -50,7 +50,7 @@ class Emotion(Vector):
 
     def strength(self) :
         mag = self.magnitude()
-        if mag >= 0 and mag < 0.5 :
+        if mag > 0.0001 and mag < 0.5 :
             return 'slightly'
         elif mag >= 0.5 and mag < 1.5 :
             return 'moderately'
@@ -108,3 +108,34 @@ class Emotion(Vector):
 class EmoAnalyzer:
     def __init__(self):
         self.emot = Emotion()
+        self.neg = 1
+
+    def Clear(self) :
+        self.emot = Emotion()
+        self.neg = 1
+
+    def getNeg(self) :
+        result = self.neg
+        self.neg *= self.neg
+        return result
+
+    def Analyze(self, token) :
+        if token['word'] == 'not' :
+            self.neg = -1
+        elif token.get('emot') != None :
+            self.AddEmo(token['emot'])
+
+    def AddEmo(self, e) :
+        if isinstance(e, Emotion) :
+            self.emot += e * self.getNeg()
+        elif isinstance(e, list) :
+            self.emot += Emotion(e[0], e[1]) * self.getNeg()
+
+    def setEmo(self, x, y) :
+        self.emot = Emotion(x, y)
+
+    def getEmo(self) :
+        return self.emot.getEmot()
+
+    def showEmo(self) :
+        print(self.emot.getEmot())

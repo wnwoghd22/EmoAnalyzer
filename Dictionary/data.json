@@ -1,684 +1,226 @@
 {
     "list":[
         {
-            "word": "happy",
-            "pos":"adj",
-            "emotion": [ "18d", 1 ]
+            "word": "am",
+            "pos": "v",
+            "base": "be"
+        }, 
+        {
+            "word": "'m",
+            "pos": "v",
+            "base": "be"
         },
         {
-            "word":"sad",
-            "pos":"adj"
-        },
-        {
-            "word":"cat",
-            "pos":"n"
-        },
-        {
-            "word":"that",
-            "pos":"det"
+            "word":"are",
+            "pos":"v",
+            "base": "be"
         },
         {
             "word":"is",
+            "pos":"v",
+            "base": "be"
+        },
+        {
+            "word":"a",
+            "pos":"det"
+        },
+        {
+            "word": "Auts",
+            "pos": "uh"
+        },
+        {
+            "word":"but",
+            "pos":"cc"
+        },
+        {
+            "word":"bet",
             "pos":"v"
         },
         {
-            "word":"the",
-            "pos":"art"
+            "word": "be",
+            "pos": "v",
+            "base": "be"
         },
         {
-            "word":"house",
+            "word":"better",
+            "pos":"adj",
+            "emot": ["0d", 0.5]
+        },
+        {
+            "word": "congratulations",
+            "pos": "n",
+            "emot": ["0d", 1]
+        },
+        {
+            "word":"done",
+            "pos":"vbn",
+            "base": "do"
+        },
+        {
+            "word":"during",
+            "pos":"prep"
+        },
+        {
+            "word":"day",
             "pos":"n"
-        },
-        {
-            "word":"pencil",
-            "pos":"n"
-        },
-        {
-            "word":"paper",
-            "pos":"n"    
-        },
-        {
-            "word":"apple",
-            "pos":"n"
-        },
-        {
-            "word":"running",
-            "pos":"n"
-        },
-        {
-            "word":"bird",
-            "pos":"n"
-        },
-        {
-            "word":"eat",
-            "pos":"v"
-        },
-        {
-            "word":"dutchmen",
-            "pos":"n",
-            "emotion": [0,0]
-        },
-        {
-            "word":"camels",
-            "pos":"n"
-        },
-        {
-            "word":"green",
-            "pos":"adj"     
-        },
-        {
-            "word":"blue",
-            "pos":"adj"
-        },
-        {
-            "word":"gray",
-            "pos":"adj"
-        },
-        {
-            "word":"brown",
-            "pos":"adj" 
-        },
-        {
-            "word":"man",
-            "pos":"n"
-        },
-        {
-            "word":"boat",
-            "pos":"n"    
-        },
-        {
-            "word":"old",
-            "pos":"adj"
-        },
-        {
-            "word":"time",
-            "pos":"n"
-        },
-        {
-            "word":"flies",
-            "pos":"n"
-        },
-        {
-            "word":"like",
-            "pos":"prep"    
-        },
-        {
-            "word":"an",
-            "pos":"det"    
-        },
-        {
-            "word":"arrow",
-            "pos":"n"
-        },
-        {
-            "word":"fruit",
-            "pos":"n"   
-        },
-        {
-            "word":"bananas",
-            "pos":"n"    
-        },
-        {
-            "word":"raining",
-            "pos":"adj"    
-        },
-        {
-            "word":"am",
-            "pos":"v"
-        },
-        {
-            "word":"sorry",
-            "pos":"adj"
-        },
-        {
-            "word":"character",
-            "pos":"n"
-        },
-        {
-            "word":"printer",
-            "pos":"n"    
-        },
-        {
-            "word":"terminal",
-            "pos":"n"    
-        },
-        {
-            "word":"turn",
-            "pos":"vt"    
-        },
-        {
-            "word":"computer",
-            "pos":"n"    
-        },
-        {
-            "word":"follow",
-            "pos":"vt"    
-        },
-        {
-            "word":"instruction",
-            "pos":"n"    
-        },
-        {
-            "word":"mean",
-            "pos":"v"    
-        },
-        {
-            "word":"know",
-            "pos":"vt"  
-        },
-        {
-            "word":"have",
-            "pos":"vt"    
-        },
-        {
-            "word":"fun",
-            "pos":"vi"    
-        },
-        {
-            "word":"feeling",
-            "pos":"n"    
-        },
-        {
-            "word":"congratulation",
-            "pos":"n"    
-        },
-        {
-            "word":"really",
-            "pos":"adv"   
-        },
-        {
-            "word":"what",
-            "pos":"pro"    
-        },
-        {
-            "word":"tomorrow",
-            "pos":"adv"    
         },
         {
             "word":"everything",
-            "pos":"pro"    
+            "pos":"pro"
         },
         {
-        "word":"hurting",
-        "pos":"adj"    
+            "word": "feeling",
+            "pos": "vbg",
+            "base": "feel"
         },
         {
-        "word":"better",
-        "pos":"adj"    
+            "word":"for",
+            "pos":"prep"
         },
         {
-        "word":"lesson",
-        "pos":"n"    
+            "word":"fun",
+            "pos":"n",
+            "emot": ["54d", 1]
         },
         {
-        "word":"function",
-        "pos":"n"    
+            "word":"have",
+            "pos":"v",
+            "valency": 2
         },
         {
-        "word":"matriculate",
-        "pos":"v"    
+            "word":"hurting",
+            "pos":"vbg",
+            "base": "hurt",
+            "emot": ["180", 1]
         },
         {
-            
-        "word":"dote",
-        "pos":"n"
+            "word":"hours",
+            "pos":"n"
         },
         {
-        "word":"where",
-        "pos":"pro"
+            "word":"I",
+            "pos":"pro"
         },
         {
-        "word":"optimal",
-        "pos":"adj"    
+            "word":"it",
+            "pos":"pro"
         },
         {
-        "word":"sense",
-        "pos":"n"    
+            "word":"know",
+            "pos":"v",
+            "valency": 2
         },
         {
-        "word":"typical",
-        "pos":"adj"    
+            "word":"lesson",
+            "pos":"n"
         },
         {
-        "word":"aerobic",
-        "pos":"adj"    
+            "word":"mean",
+            "pos":"v",
+            "valency": 2
         },
         {
-        "word":"widespread",
-        "pos":"adj"    
+            "word":"not",
+            "pos":"adv"
         },
         {
-        "word":"hardworking",
-        "pos":"adj"
+            "word":"now",
+            "pos":"adv"
         },
         {
-        "word":"relationship",
-        "pos":"n"    
+            "word":"over",
+            "pos":"adv"
         },
         {
-        "word":"ambivalent",
-        "pos":"adj"    
+            "word":"really",
+            "pos":"adv"
         },
         {
-        "word":"angelic",
-        "pos":"adj"    
+            "word":"sorry",
+            "pos":"adj",
+            "emot": ["-135d", 1]
         },
         {
-        "word":"angry",
-        "pos":"adj"    
+            "word":"survived",
+            "pos":"v"
         },
         {
-        "word":"asleep",
-        "pos":"adj"    
+            "word":"took",
+            "pos":"v"
         },
         {
-        "word":"bandaid",
-        "pos":"n"
+            "word":"that",
+            "pos" :"det"
         },
         {
-        "word":"bored",
-        "pos":"adj"    
+            "word":"tomorrow",
+            "pos":"n"
         },
         {
-        "word":"crying",
-        "pos":"adj"   
+            "word":"well",
+            "pos":"adv",
+            "emot": ["0d", 0.3]
         },
         {
-        "word":"delicious",
-        "pos":"adj"    
+            "word":"what",
+            "pos":"wp"
         },
         {
-        "word":"devilish",
-        "pos":"adj"    
+            "word":"will",
+            "pos":"md"
         },
         {
-        "word":"disgusted",
-        "pos":"adj"    
+            "word":"you",
+            "pos":"pro"
         },
         {
-        "word":"drunk",
-        "pos":"v"    
+            "word":"your",
+            "pos":"pro"
         },
         {
-        "word":"exhausted",
-        "pos":"adj"    
+            "word": ":)",
+            "pos": "emot",
+            "emot": ["45d", 0.5]
         },
         {
-        "word":"glass",
-        "pos":"n"
+            "word": ";)",
+            "pos": "emot",
+            "emot": ["30d", 0.5]
         },
         {
-        "word":"love",
-        "pos":"n"
-            
+            "word": "\\U1F631",
+            "pos": "emoj",
+            "emot": ["135d", 1]
         },
         {
-        "word":"heart",
-        "pos":"n"    
+            "word": ":(",
+            "pos": "emot",
+            "emot": ["-135d", 0.5]
         },
         {
-        "word":"go",
-        "pos":"v"    
+            "word": "\\U1F44F",
+            "pos": "emoj",
+            "emot": ["0d", 0.3]
         },
         {
-        "word":"positive",
-        "pos":"adj"    
+            "word": "\\U1F648",
+            "pos": "emoj",
+            "emot": ["45d", 0.3]
         },
         {
-        "word":"superlative",
-        "pos":"adj"    
+            "word": "\\U1F3B7",
+            "pos": "emoj",
+            "emot": ["0d", 0]
         },
         {
-        "word":"kick",
-        "pos":"v"    
+            "word": "\\U1F62B",
+            "pos": "emoj",
+            "emot": ["135d", 1.5]
         },
         {
-        "word":"smile",
-        "pos":"v"
-            
-        },
-        {
-        "word":"tongue",
-        "pos":"n"    
-        },
-        {
-        "word":"wink",
-        "pos":"v"
-        },
-        {
-        "word":"geek",
-        "pos":"n"    
-        },
-        {
-        "word":"cool",
-        "pos":"adj"    
-        },
-        {
-        "word":"mad",
-        "pos":"adj"    
-        },
-        {
-        "word":"thinking",
-        "pos":"v"    
-        },
-        {
-        "word":"confused",
-        "pos":"adj"
-        },
-        {
-        "word":"kiss",
-        "pos":"v"    
-        },
-        {
-        "word":"devil",
-        "pos":"n"    
-        },
-        {
-        "word":"pacman",
-        "pos":"n"    
-        },
-        {
-        "word":"robot",
-        "pos":"n"    
-        },
-        {
-        "word":"shark",
-        "pos":"n"    
-        },
-        {
-        "word":"penguin",
-        "pos":"n"    
-        },
-        {
-        "word":"flower",
-        "pos":"n"    
-        },
-        {
-        "word":"way",
-        "pos":"n"    
-        },
-        {
-        "word":"weigh",
-        "pos":"n"
-        },
-        {
-        "word":"hair",
-        "pos":"n"    
-        },
-        {
-        "word":"hare",
-        "pos":"n"    
-        },
-        {
-        "word":"feat",
-        "pos":"n"    
-        },
-        {
-        "word":"feet",
-        "pos":"n"    
-        },
-        {
-        "word":"knight",
-        "pos":"n"    
-        },
-        {
-        "word":"night",
-        "pos":"n"
-        },
-        {
-        "word":"stairs",
-        "pos":"n"    
-        },
-        {
-        "word":"son",
-        "pos":"n"    
-        },
-        {
-        "word":"sun",
-        "pos":"n"    
-        },
-        
-        {
-        "word":"mail",
-        "pos":"n"    
-        },
-        {
-        "word":"male",
-        "pos":"adj"    
-        },
-        {
-        "word":"flour",
-        "pos":"n"    
-        },
-        {
-        "word":"eight",
-        "pos":"n"
-        },
-        {
-        "word":"sew",
-        "pos":"v"    
-        },
-        {
-        "word":"board",
-        "pos":"n"    
-        },
-        {
-        "word":"deer",
-        "pos":"n"    
-        },
-        {
-        "word":"dear",
-        "pos":"adj"
-        },
-        {
-        "word":"hole",
-        "pos":"n"    
-        },
-        {
-        "word":"whole",
-        "pos":"adj"    
-            
-        },
-        {
-        "word":"waist",
-        "pos":"n"    
-        },
-        {
-        "word":"waste",
-        "pos":"n"    
-        },
-        {
-        "word":"one",
-        "pos":"n"    
-        },
-        {
-        "word":"won",
-        "pos":"n"    
-        },
-        {
-        "word":"eye",
-        "pos":"n"    
-        },
-        {
-        "word":"groan",
-        "pos":"vi"    
-        },
-        {
-        "word":"right",
-        "pos":"n"    
-        },
-        {
-        "word":"write",
-        "pos":"v"    
-        },
-        {
-        "word":"steel",
-        "pos":"n"    
-        },
-        {
-        "word":"deer",
-        "pos":"n"    
-        },
-        {
-        "word":"route",
-        "pos":"n"    
-        },
-        {
-        "word":"pail",
-        "pos":"n"    
-        },
-        {
-        "word":"road",
-        "pos":"n"    
-        },
-        {
-        "word":"trust",
-        "pos":"n"    
-        },
-        {
-        "word":"poll",
-        "pos":"n"    
-        },
-        {
-        "word":"lodge",
-        "pos":"n"    
-        },
-        {
-        "word":"long",
-        "pos":"n"
-        },
-        {
-        "word":"book",
-        "pos":"n"    
-        },
-        {
-        "word":"shop",
-        "pos":"v"
-           
-        },
-        {
-        "word":"money",
-         "pos":"n"   
-        },
-        {
-        "word":"him",
-        "pos":"pro"    
-        },
-        {
-        "word":"fish",
-        "pos":"n"    
-            
-        },
-        {
-        "word":"fork",
-        "pos":"n"    
-        },
-        {
-        "word":"bones",
-        "pos":"n"    
-        },
-        {
-        "word":"he",
-        "pos":"pro"    
-        },
-        {
-        "word":"I",
-        "pos":"pro"    
-        },
-        {
-        "word":"shoes",
-        "pos":"n"    
-        },
-        {
-        "word":"she",
-        "pos":"pro"    
-        },
-        {
-        "word":"them",
-        "pos":"pro"    
-        },
-        {
-        "word":"they",
-        "pos":"pro"    
-        },
-        {
-        "word":"him",
-        "pos":"pro"    
-        },
-        {
-        "word":"her",
-        "pos":"pro"
-        },
-        {
-        "word":"how",
-        "pos":"adv"    
-        },
-        {
-        "word":"what",
-        "pos":"pro"    
-        },
-        {
-        "word":"where",
-        "pos":"adv"    
-        },
-        {
-        "word":"who",
-        "pos":"pro"    
-        },
-        {
-        "word":"which",
-        "pos":"pro"    
-        },
-        {
-        "word":"while",
-        "pos":"conj"    
-        },
-        {
-        "word":"sing",
-        "pos":"v"    
-        },
-        {
-        "word":"song",
-         "pos":"n"   
-        },
-        {
-        "word":"line",
-        "pos":"n"
-        },
-        {
-        "word":"teacher",
-        "pos":"n"    
-        },
-        {
-        "word":"dog",
-        "pos":"n"    
-        },
-        {
-        "word":"mouse",
-        "pos":"n"    
-        },
-        {
-        "word":"woman",
-        "pos":"n"    
-        },
-        {
-        "word":"sky",
-        "pos":"n"
-        },
-        {
-        "word":"air",
-        "pos":"n"    
-        },
-        {
-        "word":"father",
-        "pos":"n"
-        },
-        {
-        "word":"water",
-        "pos":"n"
+            "word": "\\U1F60D",
+            "pos": "emoj",
+            "emot": ["45d", 2.5]
         }
-        
     ]
-    
 }
-
