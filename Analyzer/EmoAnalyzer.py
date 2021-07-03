@@ -15,7 +15,7 @@ class Vector:
         return math.sqrt(self.x * self.x + self.y * self.y)
 
     def rad(self) : 
-        return math.atan2(self.x, self.y)
+        return math.atan2(self.y, self.x)
 
     def deg(self) : 
         return self.rad() * 180 / math.pi
@@ -135,6 +135,7 @@ class EmoAnalyzer:
         self.emot = Emotion(x, y)
 
     def getEmo(self) :
+        #print(self.emot, self.emot.deg())
         return self.emot.getEmot()
 
     def showEmo(self) :

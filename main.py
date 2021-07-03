@@ -45,16 +45,11 @@ def main():
     
     sample = open('./sample.txt', 'r')
     lines = sample.read().splitlines()
-    #for line in lines :
-    #    bot.run(line)
-    bot.run(lines[0])
-    bot.run(lines[1])
-    bot.run(lines[2])
-    bot.run(lines[3])
-    #bot.run(lines[4])
-    #bot.run(lines[5])
-    #bot.run(lines[6])
+    for line in lines :
+        print(line)
+        bot.run(line)
     
-    bot.run()
+    #bot.run()
+
 if __name__ == '__main__': 
      main() 

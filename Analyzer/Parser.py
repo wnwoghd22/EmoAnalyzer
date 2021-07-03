@@ -13,8 +13,8 @@ also stack (push-down) is used.
     - if normal verb, switch state into 2
 2 : verbal phrase
     - if a verb has valency of 1, then switch state into 5
-    - if a verb has valency of 2, then switch state into 3
-    - if a verb has valency of 3, then switch state into 4
+    - if a verb has valency of 2, then switch state into 4
+    - if a verb has valency of 3, then switch state into 3
 3 : noun phrase (DATIVE) - indirect object
     - if next noun phrase encountered, then switch state into 4
 4 : noun phrase (ACCUSATIVE) - direct object
@@ -34,13 +34,11 @@ also stack (push-down) is used.
 
 class Parser:
     def __init__(self) :
+        self.phrase = []
         self.sentence = {}
         self.record = {}
-        self.holdEmoji = ''
-        self.holdEmoticone = ''
         self.state = 0
         self.stack = [] # push-down automata
-        self.phrase = []
 
     def getTop(self) :
         return self.stack.pop() if len(self.stack) > 0 else None
@@ -60,9 +58,10 @@ class Parser:
     def parse(self, taggedTokens, emoAnalyzer) :
         self.state = 0
         self.stack = []
-        
+        self.phrase = []
         self.sentence = {}
         self.record = {}
+
         for tt in taggedTokens :
             emoAnalyzer.Analyze(tt)
 
@@ -78,7 +77,7 @@ class Parser:
     #Start State
     def state0(self, token) :
         top = self.getTop()
-        if top == None or top == '$':
+        if top in[ None , '$', 'CC' ] :  # start of sentence
             if token['pos'] in ['n', 'det', 'adj', 'pro'] :  # Verbal Phrase (name, The, a, happy~...)
                 self.phrase.append(token['word'])
                 self.stack.append('NP')
@@ -88,8 +87,16 @@ class Parser:
                 self.stack.append('ADJP')
                 self.state = 1
             elif token['pos'] in ['md', 'v'] :  # Starts with Modal or Verb (May~ ?, Is~ ?, Does~ ?, Do~ ! ...)
+                self.phrase.append(token['word'])
                 self.stack.append('Q')
                 self.state = 2
+            elif token['pos'] == 'uh' :
+                self.phrase.append(token['word'])
+                self.pushSentence('Interjection')
+                self.pushRecord()
+                self.stack.append('S')
+                self.stack.append('$')
+                self.state = 0
         elif top == 'W' :
             if token['pos'] in ['n', 'det', 'adj', 'pro'] :
                 self.phrase.append(token['word'])
@@ -113,7 +120,12 @@ class Parser:
                 self.phrase.append(token['word'])
                 self.stack.append('NP$')
                 self.state = 1
-            elif token['pos'] in ['md', 'v'] : # encountered verbal phrase
+            elif token['pos'] in ['md'] : # encountered verbal phrase (modal)
+                self.pushSentence('SUBJECT')
+                self.phrase.append(token['word'])
+                self.stack.append('MD')
+                self.state = 2
+            elif token['pos'] in ['v'] : # encountered verbal phrase
                 self.pushSentence('SUBJECT')
                 self.phrase.append(token['word'])
                 if token.get('base') == 'be' :
@@ -121,7 +133,7 @@ class Parser:
                     self.state = 6
                 else :
                     self.stack.append('V' + str(token['valency']))  # V1, V2, V3
-                    self.state = 5 if token['valency'] == 1 else token['valency'] + 1
+                    self.state = 6 - token['valency']
             elif token['pos'] == '.' :
                 self.pushSentence('SUBJECT')
                 self.pushRecord()
@@ -144,17 +156,17 @@ class Parser:
                     self.state = 6
                 else :
                     self.stack.append('WV' + str(token['valency']))  # V1, V2, V3
-                    self.state = 5 if token['valency'] == 1 else token['valency'] + 1
+                    self.state = 6 - token['valency']
         elif top == 'QVP' :  # verbal phrase, reversal
             if token['pos'] in ['n', 'det', 'adj'] :
                 self.phrase.append(token['word'])
                 self.stack.append('QVP')
                 self.state = 1 
-            elif token['pos'] == 'pre' :
-                self.sentence['SUBJECT'] = self.getPhrase()
+            elif token['pos'] == 'prep' :
+                self.pushSentence('VP')
                 self.phrase.append(token['word'])
                 self.stack.append('QVP')
-                self.state = 8
+                self.state = 9
         elif top == 'ADJP' :
             if token['pos'] in [','] :
                 self.phrase.append(token['word'])
@@ -174,7 +186,18 @@ class Parser:
                 self.stack.append('S')
                 self.stack.append('NP')
                 self.state = 1
-                
+        elif top == 'PP' :
+            if token['pos'] == '.' :
+                self.pushSentence('PP')
+                self.pushRecord()
+                self.stack.append('S')
+                self.stack.append('$')
+                self.state = 0
+        elif top == 'PP$' :
+            if token['pos'] in ['n'] :
+                self.phrase.append(token['word'])
+                self.stack.append('PP')
+                self.state = 1
         #else
 
         return True
@@ -182,7 +205,16 @@ class Parser:
     #verb encountered
     def state2(self, token) :
         top = self.getTop()
-        if re.match('V\d', top) != None : # present tense
+        if top == 'MD' :
+            if token['pos'] == 'v' :
+                self.phrase.append(token['word'])
+                if token.get('base') == 'be' :
+                    self.stack.append('VP')
+                    self.state = 6
+                else :
+                    self.stack.append('V' + str(token['valency']))  # V1, V2, V3
+                    self.state = 6 - token['valency']
+        elif re.match('V\d', top) != None : # present tense
             if token['pos'] in ['n'] :
                 self.state = 5
         elif top == 'VP' :  # gerund, p.p
@@ -194,6 +226,18 @@ class Parser:
                 self.pushSentence('VP')
                 self.pushRecord()
                 self.stack.append
+        elif top == 'V$' :  # verbal phrase (need to be continued)
+            if token['pos'] == ',' :
+                self.phrase.append(token['word'])
+                self.stack.append('V$')
+                self.state = 2
+            elif token['pos'] == 'cc' :
+                self.pushSentence('VP')
+                self.pushRecord()
+                self.phrase.append(token['word'])
+                self.stack.append('S')
+                self.stack.append('CC')
+                self.state = 0
         elif top == 'Q' :
             if token['pos'] in ['n', 'det'] :
                 self.phrase.append(token['word'])
@@ -206,13 +250,77 @@ class Parser:
 
     def state3(self, token) :
         top = self.getTop()
-        if top == 'V2' :
-            if token['pos'] == 'wp' :
+        if top == 'V3' :
+            if token['pos'] == '.' :
+                self.pushSentence('VP')
+                self.pushRecord()
+                self.stack.append('S') 
+                self.stack.append('$') 
+                self.state = 0
+            elif token['pos'] in ['det', 'cd'] :
+                self.phrase.append(token['word'])
+                self.stack.append('V3$')
+                self.state = 3
+            elif token['pos'] in ['n'] :
+                self.phrase.append(token['word'])
+                self.stack.append('V3*')
+                self.state = 3
+            elif token['pos'] == 'wp' :
                 self.pushSentence('VP')
                 self.pushRecord()
                 self.phrase.append(token['word'])
                 self.stack.append('W') # wh- phrase
                 self.state = 0
+            elif token['pos'] == 'adv' :
+                self.phrase.append(token['word'])
+                self.stack.append('V3')
+                self.state = 3
+        elif top == 'V3$' :
+            if token['pos'] == 'n' :
+                self.phrase.append(token['word'])
+                self.stack.append('V3*')
+                self.state = 3
+        elif top == 'V3*' :
+            if token['pos'] == '.' :
+                self.pushSentence('VP')
+                self.pushRecord()
+                self.stack.append('S') 
+                self.stack.append('$') 
+                self.state = 0
+            elif token['pos'] == 'n' :
+                self.phrase.append(token['word'])
+                self.stack.append('V3')
+                self.state = 3
+        return True
+
+    def state4(self, token) :
+        top = self.getTop()
+        if top == 'V2' :
+            if token['pos'] in [ '.', 'cc' ] :
+                self.pushSentence('VP')
+                self.pushRecord()
+                self.stack.append('S') 
+                self.stack.append('$') 
+                self.state = 0
+            elif token['pos'] == 'wp' :
+                self.pushSentence('VP')
+                self.pushRecord()
+                self.phrase.append(token['word'])
+                self.stack.append('W') # wh- phrase
+                self.state = 0
+            elif token['pos'] in ['adj'] :
+                self.phrase.append(token['word'])
+                self.stack.append('V2$')
+                self.state = 4
+            elif token['pos'] == 'adv' :
+                self.phrase.append(token['word'])
+                self.stack.append('V1')
+                self.state = 5
+        elif top == 'V2$' :
+            if token['pos'] == 'n' :
+                self.phrase.append(token['word'])
+                self.stack.append('V1')
+                self.state = 5
         elif top == 'WV2' :
             if token['pos'] == '.' :
                 self.pushSentence('WV')
@@ -220,13 +328,19 @@ class Parser:
                 self.stack.append('S')
                 self.stack.append('$')
                 self.state = 0
+            elif token['pos'] in [ 'vbg', 'vbn' ] :
+                self.phrase.append(token['word'])
+                self.stack.append('WV2')
+                self.state = 4
             elif token['pos'] == 'emot' :
                 self.stack.append('WV2')
-                self.state = 3
-        return True
-
-    def state4(self, token) :
-
+                self.state = 4
+            elif token['pos'] == 'emoj' : 
+                self.pushSentence('WV')
+                self.pushRecord()
+                self.stack.append('S')
+                self.stack.append('$')
+                self.state = 0
         return True
 
     def state5(self, token) :
@@ -238,6 +352,21 @@ class Parser:
                 self.stack.append('S')
                 self.stack.append('$')
                 self.state = 0
+        elif top == 'V1' :
+            if token['pos'] == '.' :
+                self.pushSentence('VP')
+                self.pushRecord()
+                self.stack.append('S')
+                self.stack.append('$')
+                self.state = 0
+            elif token['pos'] == ',' :
+                self.phrase.append(token['word'])
+                self.stack.append('V$')
+                self.state = 2
+            elif token['pos'] == 'adv' :
+                self.phrase.append(token['word'])
+                self.stack.append('VP')
+                self.state = 5
         return True
 
     #be verb
@@ -246,14 +375,16 @@ class Parser:
         if top == 'VP' :
             if token['pos'] in ['vbg', 'vbn'] :
                 self.phrase.append(token['word'])
-                self.sentence['VP'] = ' '.join(self.phrase)
-                self.phrase.clear()
                 self.stack.append('V' + str(token['valency']))
-                self.state = 8
+                self.state = 6 - token['valency']
             elif token['pos'] in ['adj', 'adv'] :
                 self.phrase.append(token['word'])
                 self.stack.append('VP')
                 self.state = 7
+            elif token['pos'] in ['det', 'n', 'pro'] :
+                self.phrase.append(token['word'])
+                self.stack.append('V2')
+                self.state = 4
 
         return True
 
@@ -267,6 +398,10 @@ class Parser:
                 self.stack.append('S')
                 self.stack.append('$')
                 self.state = 0
+            elif token['pos'] in ['adj'] :
+                self.phrase.append(token['word'])
+                self.stack.append('VP')
+                self.state = 7
             elif token['pos'] in ['n', 'pro'] :
                 self.pushSentence('VP')
                 self.pushRecord()
@@ -276,8 +411,14 @@ class Parser:
                 self.state = 1
             elif token['pos'] in ['vbg', 'vbn'] :
                 self.phrase.append(token['word'])
-                self.stack.append('VP')
-                self.state = 2
+                self.stack.append('V' + str(token['valency']))
+                self.state = 6 - token['valency']
+            elif token['pos'] in ['prep'] :
+                self.pushSentence('VP')
+                self.pushRecord()
+                self.phrase.append(token['word'])
+                self.stack.append('PP')
+                self.state = 9
         return True
 
     def state8(self, token) :
@@ -288,6 +429,23 @@ class Parser:
     #prepositional phrase
     def state9(self, token) :
         top = self.getTop()
+        if top == 'PP' :
+            if token['pos'] in ['wp'] :
+                self.pushSentence('PP')
+                self.pushRecord()
+                self.phrase.append(token['word'])
+                self.stack.append('W') # wh- phrase
+                self.state = 0
+        if top == 'QVP' :
+            if token['pos'] in ['pp$'] :
+                self.phrase.append(token['word'])
+                self.stack.append('PP$')
+                self.state = 1
+            elif token['pos'] in ['n'] :
+                self.phrase.append(token['word'])
+                self.stack.append('PP')
+                self.state = 1
+        
 
         return True
 
@@ -305,6 +463,5 @@ class Parser:
             Parser.state9
         ]
 
-        print('state' + str(self.state), self.stack, token)
+        #print('state' + str(self.state), self.stack, token)
         return funclist[self.state](self, token)
-    

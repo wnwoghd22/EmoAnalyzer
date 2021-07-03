@@ -93,8 +93,8 @@ class Listener:
             else :
                 taggedTokens.append(t)
 
-        for tt in taggedTokens :
-            print(tt)
+        #for tt in taggedTokens :
+        #    print(tt)
 
         return taggedTokens
 

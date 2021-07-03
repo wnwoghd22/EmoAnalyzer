@@ -34,7 +34,9 @@
         },
         {
             "word":"bet",
-            "pos":"v"
+            "pos":"v",
+            "base": "bet",
+            "valency": 2
         },
         {
             "word": "be",
@@ -71,7 +73,8 @@
         {
             "word": "feeling",
             "pos": "vbg",
-            "base": "feel"
+            "base": "feel",
+            "valency": 2
         },
         {
             "word":"for",
@@ -83,14 +86,16 @@
             "emot": ["54d", 1]
         },
         {
-            "word":"have",
-            "pos":"v",
+            "word": "have",
+            "pos": "v",
+            "base": "have",
             "valency": 2
         },
         {
             "word":"hurting",
             "pos":"vbg",
             "base": "hurt",
+            "valency": 1,
             "emot": ["180", 1]
         },
         {
@@ -142,15 +147,19 @@
         },
         {
             "word":"survived",
-            "pos":"v"
+            "pos":"v",
+            "base": "survive",
+            "valency": 1
         },
         {
             "word":"took",
-            "pos":"v"
+            "pos":"v",
+            "base": "take",
+            "valency": 3
         },
         {
             "word":"that",
-            "pos" :"det"
+            "pos" :"cc"
         },
         {
             "word":"tomorrow",
@@ -175,7 +184,7 @@
         },
         {
             "word":"your",
-            "pos":"pro"
+            "pos":"pp$"
         },
         {
             "word": ":)",
